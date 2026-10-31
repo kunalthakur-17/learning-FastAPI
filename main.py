@@ -38,24 +38,24 @@ def get_user(user_id:int):
 
 
 
-# #  Query Parameters
+ #  Query Parameters
 
-# @app.get("/users")
-# def get_users(name:str=None):
-#     return{"search name: " : name}
+@app.get("/users")
+def get_users(name:str=None):
+    return{"search name: " : name}
 
-# @app.get("/product")
-# def get_product(limit: int=100):
-#     return {"this is total limit": limit}
+@app.get("/product")
+def get_product(limit: int=100):
+    return {"this is total limit": limit}
 
 # # Multipal Query Parameters 
 
-# @app.get("/items")
-# def get_items(name:str=None, price:int=0, status:bool=True):
-#     return{
-#         "user":{
-#             "name": name,
-#             "price": price,
-#             "status":status,
-#         }
-#     }
+@app.get("/items")
+def get_items(name:str=None, price:int=0, status:bool=True):
+    return{
+        "user":{
+            "name": name,
+            "price": price,
+            "status":status,
+        }
+    }
