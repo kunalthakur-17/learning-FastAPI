@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from pydantic import BaseModel
 
 app = FastAPI()
 
@@ -58,4 +59,55 @@ def get_items(name:str=None, price:int=0, status:bool=True):
             "price": price,
             "status":status,
         }
+    }
+
+
+# Post api
+class User(BaseModel):
+     name:str
+     age: int
+     work:str
+  
+@app.post("/cerate-user")
+def createUsser(user:User):
+    return{
+        "message": "User created succesfully",
+        "data": user
+                
+    }
+
+
+class User1(BaseModel):
+    name:str
+    age:int
+    isworking: bool
+    moble:int
+    email:str
+    watch:bool
+
+@app.post("/createUser")
+def create_user(user:User1):
+    return {
+        "message": "User Created",
+        "User": user
+    }
+    
+# nested model
+class addresss(BaseModel):
+    city:str
+    pincode:int
+    teh:str
+class nestedModels(BaseModel):
+     name:str
+     age:int
+     moble:int
+     email:str
+     address:addresss
+     
+
+@app.post("/nestedModel")
+def nestedModel(user: nestedModels):
+    return {
+        "message": "I created and learn nested model",
+        "user": user
     }
